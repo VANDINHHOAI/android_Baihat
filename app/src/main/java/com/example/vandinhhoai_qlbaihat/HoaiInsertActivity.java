@@ -101,7 +101,6 @@ public class HoaiInsertActivity extends AppCompatActivity {
     }
 
     public byte[] getByteArrayFromImageView(ImageView imgv){
-
         BitmapDrawable drawable = (BitmapDrawable) imgv.getDrawable();
         Bitmap bmp = drawable.getBitmap();
 

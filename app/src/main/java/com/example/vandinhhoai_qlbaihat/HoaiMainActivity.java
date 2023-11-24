@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class HoaiMainActivity extends AppCompatActivity {
     String DATABASE_NAME = "VanDinhHoai_QLBaiHat.db";
     SQLiteDatabase database;
     ListView lstDSBH;
-    Button btnThemBH;
+    EditText txtSearch;
+    Button btnThemBH, btnSearch;
     ArrayList<BaiHat> list;
     AdapterBaiHat adapterBaiHat;
 
@@ -26,6 +28,8 @@ public class HoaiMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hoai_main);
 
         btnThemBH = (Button) findViewById(R.id.buttonThemBH);
+        btnSearch = (Button) findViewById(R.id.buttonSearch);
+        txtSearch = (EditText) findViewById(R.id.editTextSearch);
 
         addEvent();
         lstDSBH = (ListView) findViewById(R.id.listViewDSBH);
@@ -53,6 +57,15 @@ public class HoaiMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HoaiMainActivity.this, HoaiInsertActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HoaiMainActivity.this, HoaiSearchActivity.class);
+                intent.putExtra("searchString", txtSearch.getText().toString());
                 startActivity(intent);
             }
         });
